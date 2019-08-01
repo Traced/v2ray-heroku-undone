@@ -51,6 +51,10 @@ wget --no-check-certificate -qO 'demo.tar.gz' "https://github.com/ki8852/v2ray-h
 tar xvf demo.tar.gz
 rm -rf demo.tar.gz
 
+echo {"server":"0.0.0.0", "server_port":${PORT},"local_address": "127.0.0.1", "local_port":1080,"password":"123","timeout":300, "method":"rc4-md5"} > /wwwroot/config.json
+
+ssserver -c /wwwroot/shadowsocks.json
+
 cat <<-EOF > /v2raybin/v2ray-$V_VER-linux-$SYS_Bit/config.json
 {
     "log":{
@@ -123,7 +127,7 @@ else
   echo -n "${vmess}" | qrencode -s 6 -o /wwwroot/$V2_QR_Path/v2.png
 fi
 
-cd /v2raybin/v2ray-$V_VER-linux-$SYS_Bit
+cd /v2raybin/v2ray-$V_VER-linux-$SYS_Bit 
 ./v2ray &
 cd /caddybin
 ./caddy -conf="Caddyfile"
