@@ -15,6 +15,7 @@ RUN apk upgrade --update \
         bash \
         tzdata \
         curl \
+        vim \
     && mkdir -p \ 
         ${V2RAY_LOG_DIR} \
         ${V2RAY_CONFIG_DIR} \
