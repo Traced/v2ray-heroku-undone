@@ -36,6 +36,8 @@ unzip v2ray.zip
 rm -rf v2ray.zip
 chmod +x /v2raybin/v2ray-$V_VER-linux-$SYS_Bit/*
 
+ls -al /v2raybin/
+
 C_VER=`wget -qO- "https://api.github.com/repos/mholt/caddy/releases/latest" | grep 'tag_name' | cut -d\" -f4`
 mkdir /caddybin
 cd /caddybin
@@ -53,7 +55,7 @@ rm -rf demo.tar.gz
 
 echo {"server":"0.0.0.0", "server_port":${PORT},"local_address": "127.0.0.1", "local_port":1080,"password":"123","timeout":300, "method":"rc4-md5"} > /wwwroot/config.json
 
-ssserver -c /wwwroot/shadowsocks.json
+#ssserver -c /wwwroot/shadowsocks.json
 
 cat <<-EOF > /v2raybin/v2ray-$V_VER-linux-$SYS_Bit/config.json
 {
